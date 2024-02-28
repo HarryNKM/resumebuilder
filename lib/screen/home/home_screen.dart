@@ -34,183 +34,97 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
             ),
-            const SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  children: [
+                    Listdata(
+                        title: 'Contact Info',
+                        icon: 'contact-books.png',
+                        path: 'contact'),
+                    Listdata(
+                        title: 'Carrier Objectives',
+                        icon: 'briefcase.png',
+                        path: 'carrier'),
+                    Listdata(
+                        title: 'Personal Details',
+                        icon: 'user.png',
+                        path: 'personal'),
+                    Listdata(
+                        title: 'Education',
+                        icon: 'mortarboard.png',
+                        path: 'education'),
+                    Listdata(
+                        title: 'Experiences',
+                        icon: 'thinking.png',
+                        path: 'experience'),
+                    Listdata(
+                        title: 'Technical Skils',
+                        icon: 'experience.png',
+                        path: 'technical'),
+                    Listdata(
+                        title: 'Interest/Hobbies',
+                        icon: 'open-book.png',
+                        path: 'interest'),
+                    Listdata(
+                        title: 'Projects',
+                        icon: 'project.png',
+                        path: 'project'),
+                    Listdata(
+                        title: 'Achievements',
+                        icon: 'achievement.png',
+                        path: 'achieve'),
+                    Listdata(
+                        title: 'References',
+                        icon: 'handshake.png',
+                        path: 'reference'),
+                    Listdata(
+                        title: 'Declaration',
+                        icon: 'declaration.png',
+                        path: 'declaration'),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget Listdata(
+      {required String title, required String icon, required String path}) {
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, '$path');
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.contact_mail, size: 40),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Text(
-                          "Contact Information",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                        Icon(Icons.arrow_forward_ios_outlined),
-                      ],
-                    ),
+                  Image.asset(
+                    "assets/icons/$icon",
+                    height: 30,
                   ),
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.contact_mail, size: 40),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Text(
-                          "Contact Information",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                        Icon(Icons.arrow_forward_ios_outlined),
-                      ],
-                    ),
+                  const SizedBox(
+                    width: 25,
                   ),
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.contact_mail, size: 40),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Text(
-                          "Contact Information",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                        Icon(Icons.arrow_forward_ios_outlined),
-                      ],
-                    ),
+                  Text(
+                    "$title",
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.contact_mail, size: 40),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Text(
-                          "Contact Information",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                        Icon(Icons.arrow_forward_ios_outlined),
-                      ],
-                    ),
-                  ),
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.contact_mail, size: 40),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Text(
-                          "Contact Information",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                        Icon(Icons.arrow_forward_ios_outlined),
-                      ],
-                    ),
-                  ),
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.contact_mail, size: 40),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Text(
-                          "Contact Information",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                        Icon(Icons.arrow_forward_ios_outlined),
-                      ],
-                    ),
-                  ),
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.contact_mail, size: 40),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Text(
-                          "Contact Information",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                        Icon(Icons.arrow_forward_ios_outlined),
-                      ],
-                    ),
-                  ),
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.contact_mail, size: 40),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Text(
-                          "Contact Information",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                        Icon(Icons.arrow_forward_ios_outlined),
-                      ],
-                    ),
-                  ),
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.contact_mail, size: 40),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Text(
-                          "Contact Information",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                        Icon(Icons.arrow_forward_ios_outlined),
-                      ],
-                    ),
-                  ),
+                  const Spacer(),
+                  const Icon(Icons.arrow_forward_ios_outlined),
                 ],
               ),
             ),
+            const Divider(),
           ],
         ),
       ),
