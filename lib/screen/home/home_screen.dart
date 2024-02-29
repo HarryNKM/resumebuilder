@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    Listdata(
+                     Listdata(
                         title: 'Contact Info',
                         icon: 'contact-books.png',
                         path: 'contact'),
