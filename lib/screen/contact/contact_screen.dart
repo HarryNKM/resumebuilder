@@ -11,7 +11,13 @@ class ContactScreen extends StatefulWidget {
 class _ContactScreenState extends State<ContactScreen> {
   @override
   bool isContact = true;
-  int index=0;
+  int index = 0;
+  TextEditingController txtName = TextEditingController();
+  TextEditingController txtEmail = TextEditingController();
+  TextEditingController txtPhone = TextEditingController();
+  TextEditingController txtAdd = TextEditingController();
+
+  GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,7 +44,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       onTap: () {
                         setState(() {
                           isContact = true;
-                          index=0;
+                          index = 0;
                         });
                       },
                       child: Container(
@@ -61,7 +67,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       onTap: () {
                         setState(() {
                           isContact = false;
-                          index=1;
+                          index = 1;
                         });
                       },
                       child: Container(
@@ -89,49 +95,101 @@ class _ContactScreenState extends State<ContactScreen> {
                   child: IndexedStack(
                     index: index,
                     children: [
-                      const Column(
-                        children: [
-                          TextField(
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                                icon: Icon(Icons.person), label: Text("Name")),
-                            keyboardType: TextInputType.name,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextField(
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                                icon: Icon(Icons.email), label: Text("Email")),
-                            keyboardType: TextInputType.emailAddress,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextField(
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                                icon: Icon(Icons.phone_android),
-                                label: Text("Phone")),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextField(
-                            textInputAction: TextInputAction.done,
-                            keyboardType: TextInputType.streetAddress,
-                            maxLines: 3,
-                            decoration: InputDecoration(
-                                icon: Icon(Icons.email),
-                                label: Text("Address")),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          ActionChip.elevated(label: Text("save"),),
-                        ],
+                      Form(
+                        key: formkey,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              textInputAction: TextInputAction.next,
+                              decoration: const InputDecoration(
+                                  icon: Icon(Icons.person),
+                                  label: Text("Name")),
+                              keyboardType: TextInputType.name,
+                              controller: txtName,
+                              validator: (value) {
+                                if (value!.isEmpty || value == null) {
+                                  return "Name is Required";
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            TextFormField(
+                                textInputAction: TextInputAction.next,
+                                decoration: const InputDecoration(
+                                    icon: Icon(Icons.email),
+                                    label: Text("Email")),
+                                keyboardType: TextInputType.emailAddress,
+                                controller: txtEmail,
+                                validator: (value) {
+                                  if (value!.isEmpty || value == null) {
+                                    return "Email is Required";
+                                  } else if (!RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                          .hasMatch(value)) {
+                                    return "Invalid email";
+                                  }
+                                  return null;
+                                }),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                             TextFormField(
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.phone,
+                              decoration: const InputDecoration(
+                                  icon: Icon(Icons.phone_android),
+                                  label: Text("Phone")),
+                              controller: txtPhone,
+                              validator: (value) {
+                                if(value!.isEmpty || value == null)
+                                  {
+                                    return "Moblie is Required";
+                                  }
+                                else if(value!.length!=10)
+                                  {
+                                    return "Invalid Mobile Number";
+                                  }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                             TextFormField(
+                              textInputAction: TextInputAction.done,
+                              keyboardType: TextInputType.streetAddress,
+                              maxLines: 3,
+                              decoration: const InputDecoration(
+                                  icon: Icon(Icons.email),
+                                  label: Text("Address")),
+                              controller: txtAdd,
+                              validator: (value) {
+                                if(value!.isEmpty || value==null)
+                                  {
+                                    return "Address is Required";
+                                  }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            ElevatedButton(
+                                onPressed: () {
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                  if (formkey ==
+                                      formkey.currentState!.validate()) {
+                                    String name = txtName.text;
+                                    String email = txtEmail.text;
+                                    String phone = txtPhone.text;
+                                    String add = txtAdd.text;
+                                  }
+                                },
+                                child: const Text("Save")),
+                          ],
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(10),

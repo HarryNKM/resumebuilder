@@ -33,52 +33,52 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                     width: MediaQuery.sizeOf(context).width,
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Padding(
-                      padding: EdgeInsets.all(15),
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Company Name",
                             style: TextStyle(color: Colors.blue, fontSize: 20),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          TextField(
+                           TextFormField(
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText: ("New Enterprise,San Fransisco")),
                             keyboardType: TextInputType.text,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Text(
+                          const Text(
                             "School/College/Institute",
                             style: TextStyle(color: Colors.blue, fontSize: 20),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          TextField(
+                           TextFormField(
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText: ("Quality Test Engineer")),
                             keyboardType: TextInputType.text,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Text(
+                          const Text(
                             "Roles(Optional)",
                             style: TextStyle(color: Colors.blue, fontSize: 20),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          TextField(
+                           TextFormField(
                             maxLines: 3,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
@@ -86,9 +86,112 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                                     ("Working with team members to come up with new concepts and product analysis...")),
                             keyboardType: TextInputType.text,
                           ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text(
+                            "Employed  Status",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Row(
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.circle,
+                                    color: Colors.blue,
+                                    size: 20,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    "Previously Employed",
+                                    style: TextStyle(
+                                        fontSize: 13, color: Colors.blue),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.circle_outlined,
+                                    color: Colors.grey,
+                                    size: 20,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    "Currently Employed",
+                                    style: TextStyle(
+                                        fontSize: 13, color: Colors.blue),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Divider(),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                "Joined Date",
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 18),
+                              ),
+                              Text(
+                                "Exit Date",
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 18),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
+                                height: 50,
+                                width: 130,
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: "DD/MM/YYYY"),
+                                ),
+                              ),
+                              Container(
+                                height: 50,
+                                width: 130,
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: "DD/MM/YYYY"),
+                                ),
+                              ),
+                            ],
+                          ),
+
                         ],
                       ),
                     ),
+                  ),
+                  ActionChip(
+                    label: Text("Save"),
                   ),
                 ],
               ),
