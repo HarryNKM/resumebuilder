@@ -47,7 +47,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                             height: 10,
                           ),
                            TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText: ("New Enterprise,San Fransisco")),
                             keyboardType: TextInputType.text,
@@ -63,7 +63,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                             height: 10,
                           ),
                            TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText: ("Quality Test Engineer")),
                             keyboardType: TextInputType.text,
@@ -80,7 +80,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                           ),
                            TextFormField(
                             maxLines: 3,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText:
                                     ("Working with team members to come up with new concepts and product analysis...")),
@@ -159,7 +159,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -169,7 +169,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                                 height: 50,
                                 width: 130,
                                 child: TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
                                       hintText: "DD/MM/YYYY"),
                                 ),
@@ -178,7 +178,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                                 height: 50,
                                 width: 130,
                                 child: TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
                                       hintText: "DD/MM/YYYY"),
                                 ),
@@ -190,7 +190,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                       ),
                     ),
                   ),
-                  ActionChip(
+                  const ActionChip(
                     label: Text("Save"),
                   ),
                 ],
