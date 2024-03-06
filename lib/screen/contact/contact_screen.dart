@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../utils/global.dart';
+import 'dart:io';
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({super.key});
@@ -10,6 +14,7 @@ class ContactScreen extends StatefulWidget {
 
 class _ContactScreenState extends State<ContactScreen> {
   @override
+  String path = "";
   bool isContact = true;
   int index = 0;
   TextEditingController txtName = TextEditingController();
@@ -126,8 +131,9 @@ class _ContactScreenState extends State<ContactScreen> {
                                 validator: (value) {
                                   if (value!.isEmpty || value == null) {
                                     return "Email is Required";
-                                  } else if (!RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
-                                          .hasMatch(value)) {
+                                  } else if (!RegExp(
+                                          r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                      .hasMatch(value)) {
                                     return "Invalid email";
                                   }
                                   return null;
@@ -135,7 +141,7 @@ class _ContactScreenState extends State<ContactScreen> {
                             const SizedBox(
                               height: 10,
                             ),
-                             TextFormField(
+                            TextFormField(
                               textInputAction: TextInputAction.next,
                               keyboardType: TextInputType.phone,
                               decoration: const InputDecoration(
@@ -143,21 +149,18 @@ class _ContactScreenState extends State<ContactScreen> {
                                   label: Text("Phone")),
                               controller: txtPhone,
                               validator: (value) {
-                                if(value!.isEmpty || value == null)
-                                  {
-                                    return "Moblie is Required";
-                                  }
-                                else if(value!.length!=10)
-                                  {
-                                    return "Invalid Mobile Number";
-                                  }
+                                if (value!.isEmpty || value == null) {
+                                  return "Moblie is Required";
+                                } else if (value!.length != 10) {
+                                  return "Invalid Mobile Number";
+                                }
                                 return null;
                               },
                             ),
                             const SizedBox(
                               height: 10,
                             ),
-                             TextFormField(
+                            TextFormField(
                               textInputAction: TextInputAction.done,
                               keyboardType: TextInputType.streetAddress,
                               maxLines: 3,
@@ -166,10 +169,9 @@ class _ContactScreenState extends State<ContactScreen> {
                                   label: Text("Address")),
                               controller: txtAdd,
                               validator: (value) {
-                                if(value!.isEmpty || value==null)
-                                  {
-                                    return "Address is Required";
-                                  }
+                                if (value!.isEmpty || value == null) {
+                                  return "Address is Required";
+                                }
                                 return null;
                               },
                             ),
@@ -179,44 +181,62 @@ class _ContactScreenState extends State<ContactScreen> {
                             ElevatedButton(
                                 onPressed: () {
                                   FocusManager.instance.primaryFocus?.unfocus();
-                                  if (formkey ==
-                                      formkey.currentState!.validate()) {
-                                    String name = txtName.text;
-                                    String email = txtEmail.text;
-                                    String phone = txtPhone.text;
-                                    String add = txtAdd.text;
+                                  if (formkey.currentState!.validate()) {
+                                    g1.contactName = txtName.text;
+                                    g1.contactEmail = txtEmail.text;
+                                    g1.contactNo = txtPhone.text;
+                                    g1.contactAddress = txtAdd.text;
+
+                                    formkey.currentState!.reset();
+
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(const SnackBar(
+                                      content: Text("Contact Info Saved"),
+                                      backgroundColor: Colors.blue,
+                                      behavior: SnackBarBehavior.floating,
+                                      duration: Duration(seconds: 2),
+                                    ));
+                                    setState(() {
+                                      index = 1;
+                                    });
                                   }
                                 },
                                 child: const Text("Save")),
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Container(
-                          alignment: Alignment.center,
-                          color: Colors.blueGrey,
-                          height: 150,
-                          width: MediaQuery.sizeOf(context).width * 0.90,
-                          child: Stack(
-                            alignment: Alignment.bottomRight,
-                            children: [
-                              const CircleAvatar(radius: 50),
-                              Container(
-                                height: 20,
-                                width: 20,
-                                alignment: Alignment.center,
-                                decoration: const BoxDecoration(
-                                  color: Colors.blue,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          ),
+                      Container(
+                        alignment: Alignment.center,
+                        margin: const EdgeInsets.only(top: 20),
+                        color: Colors.blueGrey,
+                        height: 170,
+                        width: MediaQuery.sizeOf(context).width * 0.90,
+                        child: Stack(
+                          alignment: Alignment.bottomRight,
+                          children: [
+                            path.isEmpty
+                                ? const CircleAvatar(
+                                    radius: 70,
+                              child: Text("ADD",style: TextStyle(color: Colors.black,fontSize: 20),),
+                                  )
+                                : CircleAvatar(
+                                    radius: 60,
+                                    backgroundImage: FileImage(File(path)),
+
+                                  ),
+                            IconButton.filled(
+                                onPressed: () async {
+                                  ImagePicker picker = ImagePicker();
+                                  XFile? image = await picker.pickImage(
+                                      source: ImageSource.gallery);
+
+                                  setState(() {
+                                    path = image!.path;
+                                    g1.profileImage = image.path;
+                                  });
+                                },
+                                icon: const Icon(Icons.add)),
+                          ],
                         ),
                       )
                     ],

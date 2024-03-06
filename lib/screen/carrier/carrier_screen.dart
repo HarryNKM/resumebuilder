@@ -48,7 +48,7 @@ class _CarrierScreenState extends State<CarrierScreen> {
                             maxLines: 6,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
-                                label: Text("Description")),
+                                label: Text("Description"),),
                             keyboardType: TextInputType.text,
                           ),
                         ],
@@ -68,13 +68,13 @@ class _CarrierScreenState extends State<CarrierScreen> {
                         children: [
                           Text(
                             "Current Designation (Experienced \nCandidate)",
-                            style: TextStyle(color: Colors.blue, fontSize: 20),
+                            style: TextStyle(color: Colors.blue, fontSize: 20,),
                           ),
                           TextField(
                             textInputAction: TextInputAction.done,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
-                                label: Text("Software Engineer")),
+                                label: Text("Software Engineer"),),
                           ),
                         ],
                       ),

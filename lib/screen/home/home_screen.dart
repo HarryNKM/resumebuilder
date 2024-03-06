@@ -83,6 +83,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         title: 'Declaration',
                         icon: 'declaration.png',
                         path: 'declaration'),
+                    Listdata(
+                        title: 'Resume',
+                        icon: 'declaration.png',
+                        path: 'resume'),
                   ],
                 ),
               ),

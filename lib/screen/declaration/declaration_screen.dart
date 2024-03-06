@@ -22,95 +22,100 @@ class _DeclarationScreenState extends State<DeclarationScreen> {
           ),
           centerTitle: true,
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              Container(
-                width: MediaQuery.sizeOf(context).width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  Container(
+                    width: MediaQuery.sizeOf(context).width,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
                         children: [
-                          Text(
-                            "Declaration",
-                            style: TextStyle(color: Colors.blue, fontSize: 25),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Declaration",
+                                style: TextStyle(color: Colors.blue, fontSize: 25),
+                              ),
+                              Icon(
+                                Icons.radio_button_on,
+                                color: Colors.blue,
+                              ),
+                            ],
                           ),
-                          Icon(
-                            Icons.radio_button_on,
-                            color: Colors.blue,
+                          const SizedBox(
+                            height: 100,
                           ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 100,
-                      ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                            hintText: "Descrition",
-                            border: OutlineInputBorder()),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Divider(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            "Date",
-                            style: TextStyle(color: Colors.grey, fontSize: 18),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                                hintText: "Descrition",
+                                border: OutlineInputBorder()),
                           ),
-                          Text(
-                            "Place(Interview \nvenue/City)",
-                            style: TextStyle(color: Colors.grey, fontSize: 18),
+                          const SizedBox(
+                            height: 20,
                           ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 150,
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                  hintText: "DD/MM/YYYY",
-                                  border: OutlineInputBorder()),
-                            ),
+                          const Divider(),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                "Date",
+                                style: TextStyle(color: Colors.grey, fontSize: 18),
+                              ),
+                              Text(
+                                "Place(Interview \nvenue/City)",
+                                style: TextStyle(color: Colors.grey, fontSize: 18),
+                              ),
+                            ],
                           ),
-                          Container(
-                            height: 50,
-                            width: 150,
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                  hintText: "DD/MM/YYYY",
-                                  border: OutlineInputBorder()),
-                            ),
+                          const SizedBox(
+                            height: 20,
                           ),
-                        ],
-                      ),
-                      SizedBox(height: 20,),
-                      Center(
-                        child: ElevatedButton(onPressed:() {
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
+                                height: 50,
+                                width: 150,
+                                child: TextFormField(
+                                  decoration: const InputDecoration(
+                                      hintText: "DD/MM/YYYY",
+                                      border: OutlineInputBorder()),
+                                ),
+                              ),
+                              Container(
+                                height: 50,
+                                width: 150,
+                                child: TextFormField(
+                                  decoration: const InputDecoration(
+                                      hintText: "DD/MM/YYYY",
+                                      border: OutlineInputBorder()),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20,),
+                          Center(
+                            child: ElevatedButton(onPressed:() {
 
-                        }, child: Text("Save")),
-                      )
-                    ],
+                            }, child: const Text("Save")),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
